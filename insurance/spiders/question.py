@@ -9,7 +9,7 @@ class QuestionSpider(scrapy.Spider):
     start_urls = ['http://www.circ.gov.cn/web/site47/tab4313/']
     rules = (
         scrapy.spiders.Rule(scrapy.linkextractors.LinkExtractor()),
-        scrapy.spiders.Rule(scrapy.linkextractors.LinkExtractor(allow=('item\.php',)), callback='parse_item'),
+        scrapy.spiders.Rule(scrapy.linkextractors.LinkExtractor(allow=('site*/tab*/info*\.htm',)), callback='parse_item'),
     )
 
     def parse_item(self, response):
