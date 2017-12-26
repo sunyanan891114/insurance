@@ -14,6 +14,7 @@ BOT_NAME = 'insurance'
 SPIDER_MODULES = ['insurance.spiders']
 NEWSPIDER_MODULE = 'insurance.spiders'
 
+FEED_EXPORT_ENCODING = 'utf-8'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'insurance (+http://www.yourdomain.com)'

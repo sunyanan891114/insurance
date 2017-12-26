@@ -9,5 +9,6 @@ import scrapy
 
 
 class InsuranceItem(scrapy.Item):
-    title = scrapy.Field()
     answer = scrapy.Field()
+    url = scrapy.Field()
+    title = scrapy.Field()
