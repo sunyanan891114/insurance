@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import scrapy
+import re
 from ..items import InsuranceItem
 
 
@@ -18,9 +19,9 @@ class QuestionSpider(scrapy.Spider):
             yield scrapy.Request(response.urljoin(i), callback=self.parse_item)
 
     def parse_item(self, response):
-        title = response.css("#ess_ctr12344_ModuleContent table.normal tbody > tr:nth-child(1) > td::text")\
-            .extract_first()
-        answer = reduce(remove_empty, response.css("#zoom p::text").extract(), '')
+        title = response.css("#ess_ctr12344_ModuleContent table.normal tbody > tr:nth-child(1) > td")\
+            .css('::text').extract_first()
+        answer = reduce(remove_empty, response.css("#zoom p").css('::text').extract(), '')
 
         if answer and title is not None:
             yield InsuranceItem(answer=answer, url=response.url, title=title)
